@@ -34,7 +34,7 @@ class ErrorLogger
         return "Type:\n$type\n\nError Message:\n$msg\n\nOrigin:\n$file\n\nLine:\n$line";
     }
 
-    public static function handle(Throwable $e, string $logger = 'laravel_error_log.txt'): void
+    public static function handle(Throwable $e, string $logger = 'backend_log.txt'): void
     {
         $timestamp = self::timestamp();
         $errorDetails = self::extract($e);
