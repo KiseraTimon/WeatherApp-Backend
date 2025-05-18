@@ -16,13 +16,20 @@ Route::get('geocode', function (Request $request)
         'appid' => env('OPENWEATHER_API_KEY')
     ]);
 
-    #Extracting Response as JSON
+    # Handling Failed Requests
+    if($response->failed())
+    {
+        return response()->json(["Weather data unavailable. Try again later"]);
+    }
+
+    # Extracting Response as JSON
     return $response->json();
 });
 
 # Default Weather Settings
 Route::get('/weather', function (Request $request)
 {
+    #Capturing API Response
     $response = Http::get(env('OPENWEATHER_ONE_CALL_URL'), [
         # Preparing API Request
         'lat' => $request->input('lat'),
@@ -32,7 +39,13 @@ Route::get('/weather', function (Request $request)
         'appid' => env('OPENWEATHER_API_KEY')
     ]);
 
-    #Extracting Response as JSON
+    # Handling Failed Requests
+    if($response->failed())
+    {
+        return response()->json(["Weather data unavailable. Try again later"]);
+    }
+
+    # Extracting Response as JSON
     return $response->json();
 });
 ?>
