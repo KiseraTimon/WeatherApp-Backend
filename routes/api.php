@@ -9,12 +9,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('geocode', function (Request $request)
 {
     # Capturing API Response
-    $response = Http::get(env('OPENWEATHER_GEOCODE_URL'), [
+    $response =
+
         # Preparing API Request
-        'q' => $request->input('city'),
-        'limit' => 1,
-        'appid' => env('OPENWEATHER_API_KEY')
-    ]);
+        Http::get(env('OPENWEATHER_GEOCODE_URL'), [
+            # Retrieving City From Query Params
+            'q' => $request->input('city'),
+
+            # Retrieving First Result From Query Results
+            'limit' => 1,
+
+            # Applying API Key
+            'appid' => env('OPENWEATHER_API_KEY')
+        ]);
 
     # Handling Failed Requests
     if($response->failed())
@@ -29,15 +36,23 @@ Route::get('geocode', function (Request $request)
 # Default Weather Settings
 Route::get('/weather', function (Request $request)
 {
-    #Capturing API Response
-    $response = Http::get(env('OPENWEATHER_ONE_CALL_URL'), [
-        # Preparing API Request
-        'lat' => $request->input('lat'),
-        'lon' => $request->input('lon'),
-        'exclude' => 'minutely, hourly',
-        'units'=> 'metric',
-        'appid' => env('OPENWEATHER_API_KEY')
-    ]);
+    # Capturing API Response
+    $response =
+
+        #Preparing API Request
+        Http::get(env('OPENWEATHER_FORECAST_URL'), [
+            # Retrieving Latitude From Query Params
+            'lat' => $request->input('lat'),
+
+            # Retrieving Longitude From Query Params
+            'lon' => $request->input('lon'),
+
+            # Converting Temp Units to Celsius
+            'units'=> 'metric',
+
+            # Applying API Key
+            'appid' => env('OPENWEATHER_API_KEY')
+        ]);
 
     # Handling Failed Requests
     if($response->failed())
