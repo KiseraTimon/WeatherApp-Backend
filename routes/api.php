@@ -13,20 +13,38 @@ Route::get('geocode', function (Request $request)
 {
     try
     {
-        # Capturing API Response
-        $response =
+        // # Capturing API Response
+        // $response =
 
-            # Preparing API Request
-            Http::get(env('OPENWEATHER_GEOCODE_URL'), [
-                # Retrieving City From Query Params
-                'q' => $request->input('city'),
+        //     # Preparing API Request
+        //     Http::get(env('OPENWEATHER_GEOCODE_URL'), [
+        //         # Retrieving City From Query Params
+        //         'q' => $request->input('city'),
 
-                # Retrieving First Result From Query Results
-                'limit' => 1,
+        //         # Retrieving First Result From Query Results
+        //         'limit' => 1,
 
-                # Applying API Key
-                'appid' => env('OPENWEATHER_API_KEY')
-            ]);
+        //         # Applying API Key
+        //         'appid' => env('OPENWEATHER_API_KEY')
+        //     ]);
+
+        // Preparing Request Vars
+        $city = $request->input('city');
+        $url = env('OPENWEATHER_GEOCODE_URL');
+        $query = [
+            'q'=> $city,
+            'limit' => 1,
+            'appid' => env('OPENWEATHER_API_KEY'),
+        ];
+
+        // Logging Full Outgoing Request
+        echo '[Geocode] Requesting URL: '.$url.'?'.http_build_query($query);
+
+        $response = Http::get($url, $query);
+
+        // Log response status and body
+        echo '[Geocode] Response status: ' . $response->status();
+        echo '[Geocode] Response body: ' . $response->body();
 
         # Handling Failed Requests
         if($response->failed())
@@ -35,7 +53,8 @@ Route::get('geocode', function (Request $request)
         }
 
         # Extracting Response as JSON
-        return $response->json();
+        $data = $response->json();
+        return $response->json($data);
     }
     catch (\Throwable $e)
     {
@@ -49,23 +68,42 @@ Route::get('/weather', function (Request $request)
 {
     try
     {
-        # Capturing API Response
-        $response =
+        // # Capturing API Response
+        // $response =
 
-            #Preparing API Request
-            Http::get(env('OPENWEATHER_FORECAST_URL'), [
-                # Retrieving Latitude From Query Params
-                'lat' => $request->input('lat'),
+        //     #Preparing API Request
+        //     Http::get(env('OPENWEATHER_FORECAST_URL'), [
+        //         # Retrieving Latitude From Query Params
+        //         'lat' => $request->input('lat'),
 
-                # Retrieving Longitude From Query Params
-                'lon' => $request->input('lon'),
+        //         # Retrieving Longitude From Query Params
+        //         'lon' => $request->input('lon'),
 
-                # Converting Temp Units to Celsius
-                'units'=> 'metric',
+        //         # Converting Temp Units to Celsius
+        //         'units'=> 'metric',
 
-                # Applying API Key
-                'appid' => env('OPENWEATHER_API_KEY')
-            ]);
+        //         # Applying API Key
+        //         'appid' => env('OPENWEATHER_API_KEY')
+        //     ]);
+
+        $lat = $request->input('lat');
+        $lon = $request->input('lon');
+        $url = env('OPENWEATHER_FORECAST_URL');
+        $query = [
+            'lat'    => $lat,
+            'lon'    => $lon,
+            'units'  => 'metric',
+            'appid'  => env('OPENWEATHER_API_KEY'),
+        ];
+
+        // Log the full outgoing request URL + params
+        echo '[Weather] Requesting URL: ' . $url . '?' . http_build_query($query);
+
+        $response = Http::get($url, $query);
+
+        // Log response status and body
+        echo '[Weather] Response status: ' . $response->status();
+        echo '[Weather] Response body: ' . $response->body();
 
         # Handling Failed Requests
         if($response->failed())
