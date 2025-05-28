@@ -1,7 +1,5 @@
 <h1 align="center">
-
     WEATHERAPP-BACKEND
-
 </h1>
 
 <h3 align=center style="font-weight: 1000;">
