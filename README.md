@@ -1,16 +1,23 @@
 <h1 align="center">
 
-    WEATHERAPP-BACKEND
+     WEATHERAPP-BACKEND 
 
-*Empowering seamless weather insights, anytime, anywhere.*
+</h1>
+
+<h3 align=center style="font-weight: 1000;">
+    Empowering seamless weather insights, anytime, anywhere
+</h3>
 
 ![Last Commit](https://img.shields.io/github/last-commit/kiseratimon/weatherapp-backend)
 ![blade](https://img.shields.io/badge/blade-57.1%25-blue)
 ![Languages](https://img.shields.io/github/languages/count/kiseratimon/weatherapp-backend)
 
 ---
-<p>
+<h3 align=center style="font-weight: 1000">
 🚀 Built with the tools and technologies
+</h3>
+
+<h1 align=center>
 
 ![JSON](https://img.shields.io/badge/-JSON-black?logo=json)
 ![Markdown](https://img.shields.io/badge/-Markdown-000000?logo=markdown)
@@ -21,7 +28,6 @@
 ![PHP](https://img.shields.io/badge/-PHP-8892BF?logo=php)
 ![Vite](https://img.shields.io/badge/-Vite-646CFF?logo=vite)
 ![Axios](https://img.shields.io/badge/-Axios-5A29E4?logo=axios)
-</p>
 </h1>
 
 ---
@@ -178,6 +184,7 @@ As a future update, the application will be able to retrieve a vast amount of da
 `config\cors.php` file.
 
 You can modify the allowed origins to restrict the laravel server to only receive requests from certain domains
+
 ```t
 <?php
 
@@ -201,3 +208,5 @@ return [
 
 ];
 ```
+
+[Back to top](#-table-of-contents)
