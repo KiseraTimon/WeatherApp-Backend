@@ -1,61 +1,203 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<h1 align="center">
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+    WEATHERAPP-BACKEND
+
+*Empowering seamless weather insights, anytime, anywhere.*
+
+![Last Commit](https://img.shields.io/github/last-commit/kiseratimon/weatherapp-backend)
+![blade](https://img.shields.io/badge/blade-57.1%25-blue)
+![Languages](https://img.shields.io/github/languages/count/kiseratimon/weatherapp-backend)
+
+---
+<p>
+🚀 Built with the tools and technologies
+
+![JSON](https://img.shields.io/badge/-JSON-black?logo=json)
+![Markdown](https://img.shields.io/badge/-Markdown-000000?logo=markdown)
+![npm](https://img.shields.io/badge/-npm-CB3837?logo=npm)
+![Composer](https://img.shields.io/badge/-Composer-885630?logo=composer)
+![JavaScript](https://img.shields.io/badge/-JavaScript-yellow?logo=javascript)
+![XML](https://img.shields.io/badge/-XML-0060aa?logo=xml)
+![PHP](https://img.shields.io/badge/-PHP-8892BF?logo=php)
+![Vite](https://img.shields.io/badge/-Vite-646CFF?logo=vite)
+![Axios](https://img.shields.io/badge/-Axios-5A29E4?logo=axios)
 </p>
+</h1>
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 📚 Table of Contents
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- [Introduction](#introduction)
+- [Prerequisites](#prerequisites)
+- [Getting Started](#getting-started)
+- [Project Structure](#project-structure)
+- [Usage](#usage)
+- [Future Possible Enhancements](#future-possible-enhancements)
+- [Acknowledgements](#acknowledgements)
+- [Assets](#assets)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Introduction
 
-## Learning Laravel
+This is a Laravel backend application in a decoupled structure. The frontend is implemented using NextJS.
+Use the access link below to check it out:
+[NextJS Frontend](https://github.com/KiseraTimon/WeatherApp-Frontend.git)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+The project in general is an API service that fetches weather data from the OpenWeather resource.
+The frontend, powered by NextJS, creates the necessary user interface to present retrieved information.
+The backend, powered by Laravel - The PHP Framework, performs the API requests and prepares it for presentation.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+For this repository, we will focus on the backend.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Prerequisites
 
-## Laravel Sponsors
+For the seamless running of this application, you will require:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- PHP
+- Composer
+- Laravel
 
-### Premium Partners
+Some of these packages require being added to your environment variables.
+Therefore, make sure they are properly configured for your system before resuming with this project
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## Getting Started
 
-## Contributing
+Setup the new project workspace in the directory of your choice
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+1. Installing Laravel Project
 
-## Code of Conduct
+    You can change `backend` to fit the name you want for your project
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+    ```bash
+    composer create-project laravel/laravel backend
+    ```
 
-## Security Vulnerabilities
+    ```bash
+    cd backend
+    ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+2. Project Configuration
 
-## License
+    This particular project implements Cross-Origin Resource Sharing (CORS).
+    This technology works as a security feature implemented to prevent unwanted requests to the backend from unauthorized domains
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+    This is configured using the following command:
+
+    ```bash
+    php artisan config:publish cors
+    ```
+
+    The `cors.php` file will be located inside `config\cors.php`.
+    Populate it correctly with the `cors.php` file provided in the `assets` section of this document
+
+3. Pulling Repository
+
+    With the laravel backend installed and the configuration complete, you can now pull this repository into your project
+
+    In case you don't have the repository yet:
+
+    ```bash
+    git clone https://github.com/KiseraTimon/WeatherApp-Backend.git
+    ```
+
+    Then 'cd' into the directory
+
+    In case you have cloned the repository already:
+
+    ```bash
+    git pull origin master
+    ```
+
+## Project Structure
+
+By the end of the installation, your frontend directory should look like this:
+
+```t
+├── app/             # Laravel service providers
+├── bootstrap/       # Bootstrap service provider
+├── database/        # Laravel migrations
+├── logs/            # Contains log files for errors during development
+├── public/          # Contains globally accessible assets of your project
+├── resources/       # General project assets (css, js, imgs etc)
+├── routes/          # Contains endpoints for web pages and APIs
+├── storage/         # Preinstalled package holding backend data
+├── store/           # Can hold your reference/scrapped codes
+├── tests/           # Laravel test environment
+├── vendor/          # Pre-installed package
+├── .editorconfig    # Code editor laravel configurations
+├── .env             # Project secret keys
+├── .env.example     # Secret key file template
+├── .gitattributes   # Git attributes file
+├── .gitinore        # Git ignore file
+├── artisan          # Artisan terminal control file
+├── composer.json    # Composer file
+├── composer.lock    # Composer file
+├── issue.txt        # Contains app issue details to the latest commit
+├── package.json     # Dependencies file
+├── phpunit.xml      # Test file
+├── vite.config.js   # Vite configuration file
+└── README.md        # Project documentation
+```
+
+## Usage
+
+With installation complete, run the command below on your terminal, within the directory
+
+1. Starting Laravel Server
+
+    Laravel programs come well packaged. After setting up the project, you can immediately start the server
+
+    ```bash
+    php artisan serve
+    ```
+
+    If you wish to have the server run on a specific port, use:
+
+    ```bash
+    php artisan serve --port=9999
+    ```
+
+2. Application
+
+    If you cloned/pulled the repository correctly, within `routes\api.php` you should be able to find the API logic.
+    You can tweak this to your preference.
+
+    All constants used in the file are declared in the `.env` file in the root directory
+
+## Future Possible Enhancements
+
+The current API procedure does not return a lot of data.
+As a future update, the application will be able to retrieve a vast amount of data to complement the quality of information available to the program's users
+
+## Acknowledgements
+
+[OpenWeather](https://openweathermap.org/) For providing the API to get weather data
+
+## Assets
+
+`config\cors.php` file.
+
+You can modify the allowed origins to restrict the laravel server to only receive requests from certain domains
+```t
+<?php
+
+return [
+
+    'paths' => ['api/*', 'sanctum/csrf-cookie'],
+
+    'allowed_methods' => ['*'],
+
+    'allowed_origins' => ['*'],
+
+    'allowed_origins_patterns' => [],
+
+    'allowed_headers' => ['*'],
+
+    'exposed_headers' => [],
+
+    'max_age' => 0,
+
+    'supports_credentials' => false,
+
+];
+```
